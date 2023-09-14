@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:up="sap.m.upload">
+  <Dialog title="Credit Request Details" contentWidth="43rem" class="bgHeader dialogbgText" titleAlignment="Center" id="ListDialog" afterClose="onAfterClose">
+<f:SimpleForm id="SimpleFormChangeColumn_oneGroup234"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title=""
+		
+			>
+			<f:content>
+				 <Label text="Credit Request Qty">
+                <layoutData>
+						<layout:GridData span="XL1 L2 M3 S12" />
+					</layoutData>
+                </Label>
+				 <StepInput id="idstep" value="0" min="0" change="onChange" textAlign="Center">
+                <layoutData>
+						<layout:GridData span="XL1 L2 M3 S6" />
+					</layoutData>
+                </StepInput>
+				<Label text="Credit Type" >
+                <layoutData>
+						<layout:GridData span="XL1 L2 M3 S12" />
+					</layoutData>
+                </Label>
+				 <ComboBox  id="idcbox" textAlign="Center" selectionChange="oSelectionchange" items="{path:'store&gt;/CRType', sorter: {     path: 'Sequence'    }, filters: { path: 'SCCCRtype', operator: 'EQ', value1: 'Y' } }">
+          <items>
+            <core:Item key="{store&gt;Id}" text="{store&gt;Description}"/>
+          </items>
+               <layoutData>
+						<layout:GridData span="XL1 L2 M3 S6" />
+					</layoutData>
+            </ComboBox>
+				 
+            
+              <Label text="Max Qty" >
+           <layoutData>
+						<layout:GridData span="XL1 L2 M3 S12" />
+					</layoutData>
+            </Label>
+            <Text id="openqty">
+              <layoutData>
+						<layout:GridData span="XL1 L2 M3 S6" />
+					</layoutData>
+            </Text>
+            <Label text="Re-Classify" id="idReClasiLabel" required="true" visible="false">	
+             <layoutData>
+						<layout:GridData span="XL1 L2 M3 S12" />
+					</layoutData>
+                    </Label>
+            <ComboBox  id="idReClasi" textAlign="Center" visible="false">
+            <core:Item key="SCS" text="Supply Chain Spoiled (SCS)" ></core:Item>
+                <core:Item key="RTV" text="Supplier (RTV)" ></core:Item>
+                 <layoutData>
+						<layout:GridData span="XL1 L2 M3 S6" />
+					</layoutData>
+        </ComboBox>
+			</f:content>
+		</f:SimpleForm>
+
+    <f:SimpleForm id="Damage" editable="true" layout="ResponsiveGridLayout" title="Damage" visible="false" adjustLabelSpan="false" singleContainerFullSize="false">
+      <f:content>
+        <Label text="Lot Code">
+          <layoutData>
+            <layout:GridData span="XL1 L2 M2 S12"/>
+          </layoutData>
+        </Label>
+        <Input id="LotCode" value="" maxLength="30">
+          <layoutData>
+            <layout:GridData span="XL1 L2 M4 S6"/>
+          </layoutData>
+        </Input>
+        <Label text="Expiry Date">
+          <layoutData>
+            <layout:GridData span="XL1 L2 M2 S12"/>
+          </layoutData>
+        </Label>
+        <DatePicker id="Expdate" valueFormat="MM-dd-yyyy" displayFormat="MM-dd-yyyy">
+          <layoutData>
+            <layout:GridData span="XL1 L2 M4 S6"/>
+          </layoutData>
+        </DatePicker>
+        <!-- <Label text="Comment">
+				</Label>
+        <TextArea id="coments"/> -->
+        <Label text="Photo"/>
+        <up:UploadSet afterItemAdded="onAfterItemAdded" uploadCompleted="onUploadCompleted" uploadEnabled="true" beforeItemAdded="onBeforeItemAdded" afterItemRemoved="onRemoveItem" instantUpload="false" id="attachmentUpl"/>
+      </f:content>
+    </f:SimpleForm>
+    <f:SimpleForm id="Shortage" editable="true" layout="ResponsiveGridLayout" title="Shortage" visible="false" adjustLabelSpan="false" singleContainerFullSize="false">
+      <f:content>
+        <Label text="Delivery Date">
+          <layoutData>
+            <layout:GridData span="XL1 L2 M4 S4"/>
+          </layoutData>
+        </Label>
+        <DatePicker id="DeliveryDate" valueFormat="MM-dd-yyyy" displayFormat="MM-dd-yyyy" change="fnChange">
+          <layoutData>
+            <layout:GridData span="XL1 L2 M4 S4"/>
+          </layoutData>
+        </DatePicker>
+        <Label text="Photo"/>
+        <up:UploadSet afterItemAdded="onAfterItemAdded" uploadCompleted="onUploadCompleted" uploadEnabled="true" beforeItemAdded="onBeforeItemAdded" afterItemRemoved="onRemoveItem" instantUpload="false" id="attachmentUpl2"/>
+      </f:content>
+    </f:SimpleForm>
+    <f:SimpleForm id="NotShipped" editable="true" layout="ResponsiveGridLayout" title="Not Shipped" visible="false" adjustLabelSpan="false" singleContainerFullSize="false">
+      <f:content>
+        <!-- <Label text="Comments" required="true"/>
+        <TextArea id="Nscomments" required="true"/> -->
+      </f:content>
+    </f:SimpleForm>
+    <f:SimpleForm id="Quality" editable="true" layout="ResponsiveGridLayout" title="Quality" visible="false"
+     columnsXL="2"
+			columnsL="2"
+			columnsM="2" adjustLabelSpan="false"  singleContainerFullSize="false">
+      <f:content>
+        <core:Title text=""/>
+        <Label text="Product Category" required="true">
+         <layoutData>
+						<layout:GridData span="XL3 L3 M12 S12" />
+					</layoutData>
+                </Label>
+        <Input id="ProductName" value="{qualityModel&gt;/ProductType}" editable="false">
+         <layoutData>
+						<layout:GridData span="XL4 L4 M12 S6" />
+					</layoutData>
+            </Input>
+        <Label text="Product Issue" required="true">
+         <layoutData>
+						<layout:GridData span="XL4 L4 M12 S12" />
+					</layoutData>
+                 </Label>
+        <MultiComboBox selectedKeys="{qualityModel&gt;/ProductIssue}" id="idProductIssueMCB" selectionFinish="onProductissue" items="{productIssueModel&gt;/}">
+          <items>
+            <core:Item key="{productIssueModel&gt;IssueCode_Id}" text="{productIssueModel&gt;IssueDesc}"/>
+          </items>
+          <layoutData>
+					<layout:GridData span="XL4 L4 M12 S6" />
+					</layoutData>
+        </MultiComboBox>
+        <Label text="Use By Date">
+         <layoutData>
+					<layout:GridData span="XL4 L4 M12 S12" />
+					</layoutData>
+                 </Label>
+        <DatePicker id="UseByDate" valueFormat="YYYY-MM-dd" displayFormat="MM-dd-yyyy" value="{path:'qualityModel&gt;/UseByDate', type: 'sap.ui.model.type.Date', formatOptions: {style: 'medium', pattern:'MM-dd-yyyy', strictParsing: true , UTC: true}}">
+         <layoutData>
+					<layout:GridData span="XL4 L4 M12 S6" />
+					</layoutData>
+                     </DatePicker>
+        <Label text="Julian Date">
+         <layoutData>
+						<layout:GridData span="XL4 L4 M12 S12" />
+					</layoutData>
+                 </Label>
+        <DatePicker id="JulianDate" valueFormat="YYYY-MM-dd" displayFormat="MM-dd-yyyy" value="{path:'qualityModel&gt;/JulianDate'}">
+         <layoutData>
+						<layout:GridData span="XL4 L4 M12 S6" />
+					</layoutData>
+                </DatePicker>
+        <core:Title text=""/>
+        <Label text="Lot Code">
+         <layoutData>
+						<layout:GridData span="XL4 L4 M12 S12" />
+					</layoutData>
+                 </Label>
+        <Input id="QLotCode" value="{QLotCode}">
+        	<layoutData>
+						<layout:GridData span="XL4 L4 M12 S6" />
+					</layoutData>	
+                </Input> 
+        <Label text="Manufacture Date">
+        <layoutData>
+						<layout:GridData span="XL4 L4 M12 S12" />
+					</layoutData>
+                    </Label>
+        <DatePicker id="ManufactureDate" valueFormat="YYYY-MM-dd" displayFormat="MM-dd-yyyy" value="{path:'qualityModel&gt;/ManufactureDate', type: 'sap.ui.model.type.Date', formatOptions: {style: 'medium', pattern:'MM-dd-yyyy', strictParsing: true , UTC: true}}">
+         <layoutData>
+						<layout:GridData span="XL4 L4 M12 S6" />
+					</layoutData>
+                </DatePicker>
+        <Label text="Expiration Date">
+         <layoutData>
+						<layout:GridData span="XL4 L4 M12 S12" />
+					</layoutData>
+                 </Label>
+        <DatePicker id="ExpirationDate" valueFormat="YYYY-MM-dd" displayFormat="MM-dd-yyyy" value="{path:'qualityModel&gt;/ExpirationDate', type: 'sap.ui.model.type.Date', formatOptions: {style: 'medium', pattern:'MM-dd-yyyy', strictParsing: true , UTC: true}}">
+         <layoutData>
+						<layout:GridData span="XL4 L4 M12 S6" />
+					</layoutData>
+                </DatePicker>
+        <Label text="Best Before Date">
+         <layoutData>
+						<layout:GridData span="XL4 L4 M12 S12" />
+					</layoutData>
+                 </Label>
+        <DatePicker id="BestBeforeDate" valueFormat="YYYY-MM-dd" displayFormat="MM-dd-yyyy" value="{path:'qualityModel&gt;/BestBeforeDate', type: 'sap.ui.model.type.Date', formatOptions: {style: 'medium', pattern:'MM-dd-yyyy', strictParsing: true , UTC: true}}">
+        <layoutData>
+						<layout:GridData span="XL4 L4 M12 S6" />
+					</layoutData>
+                </DatePicker>
+      </f:content>
+    </f:SimpleForm>
+    <f:SimpleForm id="idQualityPhoto" editable="true" layout="ResponsiveGridLayout" visible="false" adjustLabelSpan="false" singleContainerFullSize="false">
+      <f:content>
+        <Label text="Photo"/>
+        <up:UploadSet afterItemAdded="onAfterItemAdded" uploadCompleted="onUploadCompleted" uploadEnabled="true" beforeItemAdded="onBeforeItemAdded" afterItemRemoved="onRemoveItem" instantUpload="false" id="attachmentUpl1"/>
+      </f:content>
+    </f:SimpleForm>
+    <beginButton>
+      <Button id="Idsave" text="Save" press="onSave"/>
+    </beginButton>
+    <endButton>
+      <Button text="Cancel" press="onClose"/>
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

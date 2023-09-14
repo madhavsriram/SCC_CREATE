@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:c="sap.suite.ui.commons">
+<Dialog id="DeliveryPopup"  afterClose="afterClose" beforeOpen="onBeforeOpenDialog"  titleAlignment="Center" class="bgHeader dialogbgText sapUiPopupWithPadding"
+title="Delivery Credit Reason">
+<ComboBox id="DeliveryType" selectedKey="" change="onSelectCredit" width="100%"
+items="{path:'store>/CRType', filters: { path: 'SCCCDelCRType', operator: 'EQ', value1: 'Y' } }">
+<layoutData>
+<FlexItemData growFactor="1"/>
+</layoutData>
+<core:Item key="{store>Id}" text="{store>Description}"/>
+</ComboBox>
+<buttons>
+<Button text="Save" press="onDeliveryFeeSave" id="saveBtn" type="Emphasized" enabled="false"></Button>
+<Button id="onCloseDelivery" text="Cancel" type="Emphasized" press="onCloseDeliveryFee"></Button>
+</buttons>
+</Dialog>
+</core:FragmentDefinition>

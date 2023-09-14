@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" 
+    xmlns="sap.m">
+    <!--Column 1 Cell-->
+    <core:Icon id="Customicon1" class="size5" color="{parts:[{path: 'CommentStatus'}], formatter: '.formatter.setColors'}" press="openItemComments" 
+    src="{parts:[{path: 'CommentStatus'}], formatter: '.formatter.setColor'}" visible="{=${ItemNo}==='CDF'?false:true}">
+                                    <!-- enabled="{= ${uniModel>/crNo}}" -->
+                                    <core:layoutData id="Customcore1">
+                                        <FlexItemData id="Customflex1" growFactor="1"/>
+                                    </core:layoutData>
+                                </core:Icon>
+                                <core:Icon id="Customicon2" src="sap-icon://add" class="size5" color="#8875E7" press="onAddIcon" visible="{=${ItemNo}==='CDF'?false:true}">
+                                    <core:layoutData id="Customcore2">
+                                        <FlexItemData id="Customflex2" growFactor="1"/>
+                                    </core:layoutData>
+                                </core:Icon>
+</core:FragmentDefinition>
+<!-- OnItemDetails -->

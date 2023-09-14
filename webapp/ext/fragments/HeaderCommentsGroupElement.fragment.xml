@@ -1,0 +1,6 @@
+<core:FragmentDefinition  xmlns:sfi="sap.ui.comp.smartfield" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:sfo="sap.ui.comp.smartform">
+<sfo:GroupElement>
+    <!-- <Link text="Comments" press="openHeaderComments"  /> -->
+    <!-- enabled="{ parts: [ {uniModel>/crNo}], formatter : '.createstorecr.ext.formatter.commentsEnable'}" -->
+</sfo:GroupElement>
+</core:FragmentDefinition>

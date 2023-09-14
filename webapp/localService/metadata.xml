@@ -1,0 +1,1910 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Measures.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Measures" Namespace="Org.OData.Measures.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="DominosCreateSCCTransaction" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="CreditReqHdr" EntityType="DominosCreateSCCTransaction.CreditReqHdr"/>
+                <EntitySet Name="CreditReqItem" EntityType="DominosCreateSCCTransaction.CreditReqItem"/>
+                <EntitySet Name="CRCommit" EntityType="DominosCreateSCCTransaction.CRCommit"/>
+                <EntitySet Name="Attachment" EntityType="DominosCreateSCCTransaction.Attachment"/>
+                <EntitySet Name="AttachmentRow" EntityType="DominosCreateSCCTransaction.AttachmentRow"/>
+                <EntitySet Name="AttachmentPIssue" EntityType="DominosCreateSCCTransaction.AttachmentPIssue"/>
+                <EntitySet Name="SCCRegion" EntityType="DominosCreateSCCTransaction.SCCRegion"/>
+                <EntitySet Name="UserAssignment" EntityType="DominosCreateSCCTransaction.UserAssignment"/>
+                <EntitySet Name="BTP_DelvFee_Setup" EntityType="DominosCreateSCCTransaction.BTP_DelvFee_Setup"/>
+                <EntitySet Name="BTP_DelvFee_Setup_Dtl" EntityType="DominosCreateSCCTransaction.BTP_DelvFee_Setup_Dtl"/>
+                <EntitySet Name="ProductName" EntityType="DominosCreateSCCTransaction.ProductName"/>
+                <EntitySet Name="ProductIssue" EntityType="DominosCreateSCCTransaction.ProductIssue"/>
+                <EntitySet Name="ProductIssueMaster" EntityType="DominosCreateSCCTransaction.ProductIssueMaster"/>
+                <EntitySet Name="SCCHeader" EntityType="DominosCreateSCCTransaction.SCCHeader"/>
+                <EntitySet Name="PSInvoiceHdr" EntityType="DominosCreateSCCTransaction.PSInvoiceHdr"/>
+                <EntitySet Name="PSInvoiceItems" EntityType="DominosCreateSCCTransaction.PSInvoiceItems"/>
+                <EntitySet Name="SCCOpenCR" EntityType="DominosCreateSCCTransaction.SCCOpenCR"/>
+                <EntitySet Name="SCCClosedCR" EntityType="DominosCreateSCCTransaction.SCCClosedCR"/>
+                <EntitySet Name="GetCRDetail" EntityType="DominosCreateSCCTransaction.GetCRDetail"/>
+                <EntitySet Name="GetInvoiceItems" EntityType="DominosCreateSCCTransaction.GetInvoiceItems"/>
+                <EntitySet Name="GetInvoiceHdr" EntityType="DominosCreateSCCTransaction.GetInvoiceHdr"/>
+                <EntitySet Name="GetCRQuantity" EntityType="DominosCreateSCCTransaction.GetCRQuantity"/>
+                <EntitySet Name="GetCRItemDetails" EntityType="DominosCreateSCCTransaction.GetCRItemDetails"/>
+                <AssociationSet Name="CreditReqHdr_PSInvoiceHdr" Association="DominosCreateSCCTransaction.CreditReqHdr_PSInvoiceHdr">
+                    <End Role="CreditReqHdr" EntitySet="CreditReqHdr"/>
+                    <End Role="PSInvoiceHdr" EntitySet="PSInvoiceHdr"/>
+                </AssociationSet>
+                <AssociationSet Name="CreditReqHdr_SCC" Association="DominosCreateSCCTransaction.CreditReqHdr_SCC">
+                    <End Role="CreditReqHdr" EntitySet="CreditReqHdr"/>
+                    <End Role="SCCRegion" EntitySet="SCCRegion"/>
+                </AssociationSet>
+                <AssociationSet Name="CreditReqHdr_AttachmentId" Association="DominosCreateSCCTransaction.CreditReqHdr_AttachmentId">
+                    <End Role="CreditReqHdr" EntitySet="CreditReqHdr"/>
+                    <End Role="Attachment" EntitySet="Attachment"/>
+                </AssociationSet>
+                <AssociationSet Name="CreditReqItem_BTPCRNo" Association="DominosCreateSCCTransaction.CreditReqItem_BTPCRNo">
+                    <End Role="CreditReqItem" EntitySet="CreditReqItem"/>
+                    <End Role="CreditReqHdr" EntitySet="CreditReqHdr"/>
+                </AssociationSet>
+                <AssociationSet Name="CRCommit_CRNO" Association="DominosCreateSCCTransaction.CRCommit_CRNO">
+                    <End Role="CRCommit" EntitySet="CRCommit"/>
+                    <End Role="CreditReqHdr" EntitySet="CreditReqHdr"/>
+                </AssociationSet>
+                <AssociationSet Name="Attachment_ProductName" Association="DominosCreateSCCTransaction.Attachment_ProductName">
+                    <End Role="Attachment" EntitySet="Attachment"/>
+                    <End Role="ProductName" EntitySet="ProductName"/>
+                </AssociationSet>
+                <AssociationSet Name="Attachment_CreditReqItem" Association="DominosCreateSCCTransaction.Attachment_CreditReqItem">
+                    <End Role="Attachment" EntitySet="Attachment"/>
+                    <End Role="CreditReqItem" EntitySet="CreditReqItem"/>
+                </AssociationSet>
+                <AssociationSet Name="AttachmentRow_AttachmentID" Association="DominosCreateSCCTransaction.AttachmentRow_AttachmentID">
+                    <End Role="AttachmentRow" EntitySet="AttachmentRow"/>
+                    <End Role="Attachment" EntitySet="Attachment"/>
+                </AssociationSet>
+                <AssociationSet Name="AttachmentPIssue_ProductIssue" Association="DominosCreateSCCTransaction.AttachmentPIssue_ProductIssue">
+                    <End Role="AttachmentPIssue" EntitySet="AttachmentPIssue"/>
+                    <End Role="ProductIssue" EntitySet="ProductIssue"/>
+                </AssociationSet>
+                <AssociationSet Name="AttachmentPIssue_AttachmentID" Association="DominosCreateSCCTransaction.AttachmentPIssue_AttachmentID">
+                    <End Role="AttachmentPIssue" EntitySet="AttachmentPIssue"/>
+                    <End Role="Attachment" EntitySet="Attachment"/>
+                </AssociationSet>
+                <AssociationSet Name="BTP_DelvFee_Setup_Dtl_BTP_DelvFee_Setup" Association="DominosCreateSCCTransaction.BTP_DelvFee_Setup_Dtl_BTP_DelvFee_Setup">
+                    <End Role="BTP_DelvFee_Setup_Dtl" EntitySet="BTP_DelvFee_Setup_Dtl"/>
+                    <End Role="BTP_DelvFee_Setup" EntitySet="BTP_DelvFee_Setup"/>
+                </AssociationSet>
+                <AssociationSet Name="ProductIssue_IssueCode" Association="DominosCreateSCCTransaction.ProductIssue_IssueCode">
+                    <End Role="ProductIssue" EntitySet="ProductIssue"/>
+                    <End Role="ProductIssueMaster" EntitySet="ProductIssueMaster"/>
+                </AssociationSet>
+                <AssociationSet Name="ProductIssue_ProductID" Association="DominosCreateSCCTransaction.ProductIssue_ProductID">
+                    <End Role="ProductIssue" EntitySet="ProductIssue"/>
+                    <End Role="ProductName" EntitySet="ProductName"/>
+                </AssociationSet>
+                <AssociationSet Name="PSInvoiceItems_PsplInvoice" Association="DominosCreateSCCTransaction.PSInvoiceItems_PsplInvoice">
+                    <End Role="PSInvoiceItems" EntitySet="PSInvoiceItems"/>
+                    <End Role="PSInvoiceHdr" EntitySet="PSInvoiceHdr"/>
+                </AssociationSet>
+                <AssociationSet Name="SCCOpenCR_PSInvoiceHdr" Association="DominosCreateSCCTransaction.SCCOpenCR_PSInvoiceHdr">
+                    <End Role="SCCOpenCR" EntitySet="SCCOpenCR"/>
+                    <End Role="PSInvoiceHdr" EntitySet="PSInvoiceHdr"/>
+                </AssociationSet>
+                <AssociationSet Name="SCCOpenCR_SCC" Association="DominosCreateSCCTransaction.SCCOpenCR_SCC">
+                    <End Role="SCCOpenCR" EntitySet="SCCOpenCR"/>
+                    <End Role="SCCRegion" EntitySet="SCCRegion"/>
+                </AssociationSet>
+                <AssociationSet Name="SCCOpenCR_AttachmentId" Association="DominosCreateSCCTransaction.SCCOpenCR_AttachmentId">
+                    <End Role="SCCOpenCR" EntitySet="SCCOpenCR"/>
+                    <End Role="Attachment" EntitySet="Attachment"/>
+                </AssociationSet>
+                <AssociationSet Name="SCCClosedCR_PSInvoiceHdr" Association="DominosCreateSCCTransaction.SCCClosedCR_PSInvoiceHdr">
+                    <End Role="SCCClosedCR" EntitySet="SCCClosedCR"/>
+                    <End Role="PSInvoiceHdr" EntitySet="PSInvoiceHdr"/>
+                </AssociationSet>
+                <AssociationSet Name="SCCClosedCR_SCC" Association="DominosCreateSCCTransaction.SCCClosedCR_SCC">
+                    <End Role="SCCClosedCR" EntitySet="SCCClosedCR"/>
+                    <End Role="SCCRegion" EntitySet="SCCRegion"/>
+                </AssociationSet>
+                <AssociationSet Name="SCCClosedCR_AttachmentId" Association="DominosCreateSCCTransaction.SCCClosedCR_AttachmentId">
+                    <End Role="SCCClosedCR" EntitySet="SCCClosedCR"/>
+                    <End Role="Attachment" EntitySet="Attachment"/>
+                </AssociationSet>
+                <AssociationSet Name="GetInvoiceItems_PsplInvoice" Association="DominosCreateSCCTransaction.GetInvoiceItems_PsplInvoice">
+                    <End Role="GetInvoiceItems" EntitySet="GetInvoiceItems"/>
+                    <End Role="PSInvoiceHdr" EntitySet="PSInvoiceHdr"/>
+                </AssociationSet>
+                <AssociationSet Name="GetInvoiceHdr_PSInvoiceItems" Association="DominosCreateSCCTransaction.GetInvoiceHdr_PSInvoiceItems">
+                    <End Role="GetInvoiceHdr" EntitySet="GetInvoiceHdr"/>
+                    <End Role="GetInvoiceItems" EntitySet="GetInvoiceItems"/>
+                </AssociationSet>
+            </EntityContainer>
+            <EntityType Name="CreditReqHdr">
+                <Key>
+                    <PropertyRef Name="BTPCRNO"/>
+                    <PropertyRef Name="OrgStrucEleCode_Id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="BTPCRNO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="CRDocDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <NavigationProperty Name="PSInvoiceHdr" Relationship="DominosCreateSCCTransaction.CreditReqHdr_PSInvoiceHdr" FromRole="CreditReqHdr" ToRole="PSInvoiceHdr"/>
+                <Property Name="PSInvoiceHdr_PsplInvoice" Type="Edm.String" MaxLength="30"/>
+                <Property Name="DeliveryFee" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="AccessCR" Type="Edm.String" MaxLength="15"/>
+                <Property Name="DomicasCR" Type="Edm.String" MaxLength="15"/>
+                <Property Name="SAPCR" Type="Edm.String" MaxLength="10"/>
+                <Property Name="DomicasSO" Type="Edm.String" MaxLength="15"/>
+                <Property Name="SAPSO" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ChangedDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="CreatedDateTime" Type="Edm.DateTimeOffset"/>
+                <NavigationProperty Name="SCC" Relationship="DominosCreateSCCTransaction.CreditReqHdr_SCC" FromRole="CreditReqHdr" ToRole="SCCRegion"/>
+                <Property Name="SCC_Id" Type="Edm.Int32"/>
+                <Property Name="SCC_RegionId" Type="Edm.Int32"/>
+                <Property Name="Store_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_AccountantId_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_AccountantId_RegionId_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_SCCId_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_SCCId_RegionId" Type="Edm.Int32"/>
+                <Property Name="Accountant_Id" Type="Edm.Int32"/>
+                <Property Name="Accountant_RegionId_Id" Type="Edm.Int32"/>
+                <Property Name="SubmissionDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="UnderReviewDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="ClosedDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="CancelledDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="ApprovedDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="RejectionDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="SubmittedBy" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ObjectType_Id" Type="Edm.Int32"/>
+                <Property Name="StatusCode_Id" Type="Edm.Int32"/>
+                <Property Name="StatusCode_ObjectType_Id" Type="Edm.Int32"/>
+                <Property Name="Address_Id" Type="Edm.Int32"/>
+                <Property Name="Address_AddressName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="DocTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="TaxTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="ApprovalDocTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="OpenDocTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="Remark" Type="Edm.String" MaxLength="100"/>
+                <Property Name="OrgStrucEleCode_Id" Type="Edm.Int32" Nullable="false"/>
+                <NavigationProperty Name="AttachmentId" Relationship="DominosCreateSCCTransaction.CreditReqHdr_AttachmentId" FromRole="CreditReqHdr" ToRole="Attachment"/>
+                <Property Name="AttachmentId_AttachmentId" Type="Edm.Guid"/>
+                <Property Name="AttachmentId_DamageId_Id" Type="Edm.Int32"/>
+                <Property Name="CRInvNo" Type="Edm.String" MaxLength="30"/>
+                <Property Name="CRInvDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="Flag" Type="Edm.String" MaxLength="1"/>
+                <NavigationProperty Name="CreditReqItem" Relationship="DominosCreateSCCTransaction.CreditReqItem_BTPCRNo" FromRole="CreditReqHdr" ToRole="CreditReqItem"/>
+            </EntityType>
+            <EntityType Name="CreditReqItem">
+                <Key>
+                    <PropertyRef Name="BTPCRItem"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <NavigationProperty Name="BTPCRNo" Relationship="DominosCreateSCCTransaction.CreditReqItem_BTPCRNo" FromRole="CreditReqItem" ToRole="CreditReqHdr"/>
+                <Property Name="BTPCRNo_BTPCRNO" Type="Edm.Int32"/>
+                <Property Name="BTPCRNo_OrgStrucEleCode_Id" Type="Edm.Int32"/>
+                <Property Name="BTPCRItem" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="150"/>
+                <Property Name="Qty" Type="Edm.Int32"/>
+                <Property Name="UnitPrice" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="Tax" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="Total" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="ObjectType_Id" Type="Edm.Int32"/>
+                <Property Name="StatusCode_Id" Type="Edm.Int32"/>
+                <Property Name="StatusCode_ObjectType_Id" Type="Edm.Int32"/>
+                <Property Name="ApproveQty" Type="Edm.Int32"/>
+                <Property Name="OpenQty" Type="Edm.Int32"/>
+                <Property Name="StoreComment" Type="Edm.String" MaxLength="200"/>
+                <Property Name="SCCComment" Type="Edm.String" MaxLength="200"/>
+                <Property Name="Comment" Type="Edm.String" MaxLength="200"/>
+                <Property Name="PSInvoiceQty" Type="Edm.Int32"/>
+                <Property Name="UnitCost" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="UnitFreight" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="8"/>
+                <Property Name="TaxAmount" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="PsplInvoice" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PsplRowID" Type="Edm.Int32"/>
+                <Property Name="CRType_Id" Type="Edm.Int32"/>
+                <NavigationProperty Name="Attachment" Relationship="DominosCreateSCCTransaction.Attachment_CreditReqItem" FromRole="CreditReqItem" ToRole="Attachment"/>
+                <Property Name="ItemType" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="CRCommit">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="CRNO_BTPCRNO"/>
+                    <PropertyRef Name="CRNO_OrgStrucEleCode_Id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Id" Type="Edm.Int32" Nullable="false"/>
+                <NavigationProperty Name="CRNO" Relationship="DominosCreateSCCTransaction.CRCommit_CRNO" FromRole="CRCommit" ToRole="CreditReqHdr"/>
+                <Property Name="CRNO_BTPCRNO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="CRNO_OrgStrucEleCode_Id" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="RowId" Type="Edm.Int32"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ChangedOn" Type="Edm.DateTimeOffset"/>
+                <Property Name="CreatedOn" Type="Edm.DateTimeOffset"/>
+                <Property Name="Comment" Type="Edm.String" MaxLength="150"/>
+                <Property Name="UserType" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="50"/>
+            </EntityType>
+            <EntityType Name="Attachment">
+                <Key>
+                    <PropertyRef Name="AttachmentId"/>
+                    <PropertyRef Name="DamageId_Id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="AttachmentId" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="CRType_Id" Type="Edm.Int32"/>
+                <Property Name="DamageId_Id" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="LotCode" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Comment" Type="Edm.String" MaxLength="150"/>
+                <Property Name="ExpDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="DeliveryDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="ExpirationDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="Reason" Type="Edm.String" MaxLength="50"/>
+                <NavigationProperty Name="ProductName" Relationship="DominosCreateSCCTransaction.Attachment_ProductName" FromRole="Attachment" ToRole="ProductName"/>
+                <Property Name="ProductName_Id" Type="Edm.Int32"/>
+                <Property Name="MfgDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="UseByDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="JulianDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="BestBeforeDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ChangedOn" Type="Edm.DateTimeOffset"/>
+                <Property Name="CreatedOn" Type="Edm.DateTimeOffset"/>
+                <Property Name="Classification" Type="Edm.String" MaxLength="20"/>
+                <NavigationProperty Name="AttachmentRow" Relationship="DominosCreateSCCTransaction.AttachmentRow_AttachmentID" FromRole="Attachment" ToRole="AttachmentRow"/>
+                <NavigationProperty Name="CreditReqItem" Relationship="DominosCreateSCCTransaction.Attachment_CreditReqItem" FromRole="Attachment" ToRole="CreditReqItem"/>
+                <Property Name="CreditReqItem_BTPCRItem" Type="Edm.Guid"/>
+                <NavigationProperty Name="AttachmentPIssue" Relationship="DominosCreateSCCTransaction.AttachmentPIssue_AttachmentID" FromRole="Attachment" ToRole="AttachmentPIssue"/>
+            </EntityType>
+            <EntityType Name="AttachmentRow" m:HasStream="true">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="MediaType" Type="Edm.String"/>
+                <NavigationProperty Name="AttachmentID" Relationship="DominosCreateSCCTransaction.AttachmentRow_AttachmentID" FromRole="AttachmentRow" ToRole="Attachment"/>
+                <Property Name="AttachmentID_AttachmentId" Type="Edm.Guid"/>
+                <Property Name="AttachmentID_DamageId_Id" Type="Edm.Int32"/>
+                <Property Name="RowId" Type="Edm.Int32"/>
+                <Property Name="AttachmentName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="AttachmentType" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Attachment" Type="Edm.Binary"/>
+                <Property Name="FileName" Type="Edm.String"/>
+                <Property Name="Size" Type="Edm.Int32"/>
+                <Property Name="Url" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="AttachmentPIssue">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="ProductIssue_IssueId"/>
+                    <PropertyRef Name="AttachmentID_AttachmentId"/>
+                    <PropertyRef Name="AttachmentID_DamageId_Id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="ProductIssue" Relationship="DominosCreateSCCTransaction.AttachmentPIssue_ProductIssue" FromRole="AttachmentPIssue" ToRole="ProductIssue"/>
+                <Property Name="ProductIssue_IssueId" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="AttachmentID" Relationship="DominosCreateSCCTransaction.AttachmentPIssue_AttachmentID" FromRole="AttachmentPIssue" ToRole="Attachment"/>
+                <Property Name="AttachmentID_AttachmentId" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="AttachmentID_DamageId_Id" Type="Edm.Int32" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="SCCRegion">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="RegionId"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Id" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Address_Id" Type="Edm.Int32"/>
+                <Property Name="Address_AddressName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Active" Type="Edm.String" MaxLength="1"/>
+                <Property Name="RegionId" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="SCCRegionHead" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PsId" Type="Edm.String" MaxLength="20"/>
+                <Property Name="SAPId" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="UserAssignment">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Id" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="100"/>
+                <Property Name="AssignmentType" Type="Edm.String" MaxLength="20"/>
+                <Property Name="AssignmentId" Type="Edm.Int32"/>
+                <Property Name="User_UserId" Type="Edm.String" MaxLength="30"/>
+                <Property Name="User_OrgStruEleCode_Id" Type="Edm.Int32"/>
+                <Property Name="User_DepartmentId_Id" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="BTP_DelvFee_Setup">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="CRType_Id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Id" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="ItemNo" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Type" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CRType_Id" Type="Edm.Int32" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="BTP_DelvFee_Setup_Dtl">
+                <Key>
+                    <PropertyRef Name="BTP_DelvFee_Setup_Id"/>
+                    <PropertyRef Name="BTP_DelvFee_Setup_CRType_Id"/>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <NavigationProperty Name="BTP_DelvFee_Setup" Relationship="DominosCreateSCCTransaction.BTP_DelvFee_Setup_Dtl_BTP_DelvFee_Setup" FromRole="BTP_DelvFee_Setup_Dtl" ToRole="BTP_DelvFee_Setup"/>
+                <Property Name="BTP_DelvFee_Setup_Id" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="BTP_DelvFee_Setup_CRType_Id" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Id" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="FromDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="ToDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="ByPer" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="ByAmount" Type="Edm.Decimal" Scale="2" Precision="18"/>
+            </EntityType>
+            <EntityType Name="ProductName">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Id" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Desc" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Active" Type="Edm.String" MaxLength="1"/>
+                <NavigationProperty Name="ProductIssue" Relationship="DominosCreateSCCTransaction.ProductIssue_ProductID" FromRole="ProductName" ToRole="ProductIssue"/>
+            </EntityType>
+            <EntityType Name="ProductIssue">
+                <Key>
+                    <PropertyRef Name="IssueId"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="IssueId" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="IssueCode" Relationship="DominosCreateSCCTransaction.ProductIssue_IssueCode" FromRole="ProductIssue" ToRole="ProductIssueMaster"/>
+                <Property Name="IssueCode_Id" Type="Edm.Int32"/>
+                <Property Name="IssueDesc" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Active" Type="Edm.String" MaxLength="1"/>
+                <NavigationProperty Name="ProductID" Relationship="DominosCreateSCCTransaction.ProductIssue_ProductID" FromRole="ProductIssue" ToRole="ProductName"/>
+                <Property Name="ProductID_Id" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="ProductIssueMaster">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Id" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="IssueDesc" Type="Edm.String" MaxLength="50"/>
+            </EntityType>
+            <EntityType Name="SCCHeader">
+                <Key>
+                    <PropertyRef Name="SCCId"/>
+                    <PropertyRef Name="RegionId"/>
+                </Key>
+                <Property Name="SCCId" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="30"/>
+                <Property Name="AddressId" Type="Edm.Int32"/>
+                <Property Name="AddressName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="AddressType" Type="Edm.String" MaxLength="20"/>
+                <Property Name="AddressLine_1" Type="Edm.String" MaxLength="30"/>
+                <Property Name="AddressLine_2" Type="Edm.String" MaxLength="30"/>
+                <Property Name="City" Type="Edm.String" MaxLength="30"/>
+                <Property Name="State" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ZipCode" Type="Edm.Int32"/>
+                <Property Name="Active" Type="Edm.String" MaxLength="1"/>
+                <Property Name="RegionId" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="SCCRegionHead" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PsId" Type="Edm.String" MaxLength="20"/>
+                <Property Name="SAPId" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="PSInvoiceHdr">
+                <Key>
+                    <PropertyRef Name="PsplInvoice"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="PsplInvoice" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="InvoiveType" Type="Edm.String" MaxLength="1"/>
+                <Property Name="SCCId" Type="Edm.String" MaxLength="20"/>
+                <Property Name="SCCDesc" Type="Edm.String" MaxLength="50"/>
+                <Property Name="StoreId" Type="Edm.String" MaxLength="15"/>
+                <Property Name="StoreDesc" Type="Edm.String" MaxLength="50"/>
+                <Property Name="FranchiseId" Type="Edm.String" MaxLength="30"/>
+                <Property Name="FranchiseDesc" Type="Edm.String" MaxLength="50"/>
+                <Property Name="AccountantId" Type="Edm.String" MaxLength="20"/>
+                <Property Name="AccountantDesc" Type="Edm.String" MaxLength="30"/>
+                <Property Name="InvoiceDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="InvoiceTime" Type="Edm.Time"/>
+                <Property Name="PlannedDelivery" Type="Edm.DateTimeOffset"/>
+                <Property Name="ActualDelivery" Type="Edm.DateTimeOffset"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="50"/>
+                <Property Name="DeliveryFee" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="TotalAmt" Type="Edm.Decimal" Scale="2" Precision="23"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="15"/>
+                <Property Name="BTPCrNo" Type="Edm.Int32"/>
+                <Property Name="AccessCR" Type="Edm.String" MaxLength="15"/>
+                <Property Name="DomicasCR" Type="Edm.String" MaxLength="15"/>
+                <Property Name="SAPCR" Type="Edm.String" MaxLength="10"/>
+                <Property Name="SalesOrderNo" Type="Edm.String" MaxLength="30"/>
+                <Property Name="TaxAmount" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="TotalFreight" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="NoOfItems" Type="Edm.Int32"/>
+                <Property Name="SubAmt" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="CreditReqItem" Type="Edm.String" MaxLength="12"/>
+                <Property Name="LC_ID" Type="Edm.String" MaxLength="6"/>
+                <Property Name="BillingCurrency" Type="Edm.String" MaxLength="3"/>
+                <Property Name="EntryType" Type="Edm.String" MaxLength="5"/>
+                <NavigationProperty Name="PSInvoiceItems" Relationship="DominosCreateSCCTransaction.PSInvoiceItems_PsplInvoice" FromRole="PSInvoiceHdr" ToRole="PSInvoiceItems"/>
+            </EntityType>
+            <EntityType Name="PSInvoiceItems">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="PsplInvoice" Relationship="DominosCreateSCCTransaction.PSInvoiceItems_PsplInvoice" FromRole="PSInvoiceItems" ToRole="PSInvoiceHdr"/>
+                <Property Name="PsplInvoice_PsplInvoice" Type="Edm.String" MaxLength="30"/>
+                <Property Name="InvoiveType" Type="Edm.String" MaxLength="1"/>
+                <Property Name="RowID" Type="Edm.Int32"/>
+                <Property Name="ItemNo" Type="Edm.String" MaxLength="18"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="120"/>
+                <Property Name="Qty" Type="Edm.Int32"/>
+                <Property Name="UnitPrice" Type="Edm.Decimal" Scale="2" Precision="17"/>
+                <Property Name="UnitCost" Type="Edm.Decimal" Scale="2" Precision="23"/>
+                <Property Name="UnitFreight" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="UnitTax" Type="Edm.Decimal" Scale="2" Precision="23"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="8"/>
+                <Property Name="TrgBTPCRNo" Type="Edm.String" MaxLength="20"/>
+                <Property Name="TrgBTPCRRowId" Type="Edm.String" MaxLength="20"/>
+                <Property Name="OpenQty" Type="Edm.Decimal" Scale="0" Precision="18"/>
+                <Property Name="NetAmt" Type="Edm.Decimal" Scale="2" Precision="23"/>
+                <Property Name="LineTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="LineNumber" Type="Edm.Int32"/>
+                <Property Name="InvoiceSequenceNumber" Type="Edm.Int32"/>
+                <Property Name="SalesOrderNo" Type="Edm.String" MaxLength="30"/>
+                <Property Name="CreditType" Type="Edm.String" MaxLength="15"/>
+                <Property Name="ProductType" Type="Edm.String" MaxLength="50"/>
+                <Property Name="BillingCurrency" Type="Edm.String" MaxLength="3"/>
+            </EntityType>
+            <EntityType Name="SCCOpenCR">
+                <Key>
+                    <PropertyRef Name="BTPCRNO"/>
+                    <PropertyRef Name="OrgStrucEleCode_Id"/>
+                </Key>
+                <Property Name="BTPCRNO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="CRDocDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <NavigationProperty Name="PSInvoiceHdr" Relationship="DominosCreateSCCTransaction.SCCOpenCR_PSInvoiceHdr" FromRole="SCCOpenCR" ToRole="PSInvoiceHdr"/>
+                <Property Name="PSInvoiceHdr_PsplInvoice" Type="Edm.String" MaxLength="30"/>
+                <Property Name="DeliveryFee" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="AccessCR" Type="Edm.String" MaxLength="15"/>
+                <Property Name="DomicasCR" Type="Edm.String" MaxLength="15"/>
+                <Property Name="SAPCR" Type="Edm.String" MaxLength="10"/>
+                <Property Name="DomicasSO" Type="Edm.String" MaxLength="15"/>
+                <Property Name="SAPSO" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ChangedDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="CreatedDateTime" Type="Edm.DateTimeOffset"/>
+                <NavigationProperty Name="SCC" Relationship="DominosCreateSCCTransaction.SCCOpenCR_SCC" FromRole="SCCOpenCR" ToRole="SCCRegion"/>
+                <Property Name="SCC_Id" Type="Edm.Int32"/>
+                <Property Name="SCC_RegionId" Type="Edm.Int32"/>
+                <Property Name="Store_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_AccountantId_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_AccountantId_RegionId_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_SCCId_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_SCCId_RegionId" Type="Edm.Int32"/>
+                <Property Name="Accountant_Id" Type="Edm.Int32"/>
+                <Property Name="Accountant_RegionId_Id" Type="Edm.Int32"/>
+                <Property Name="SubmissionDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="SubmittedBy" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ObjectType_Id" Type="Edm.Int32"/>
+                <Property Name="StatusCode_Id" Type="Edm.Int32"/>
+                <Property Name="StatusCode_ObjectType_Id" Type="Edm.Int32"/>
+                <Property Name="Address_Id" Type="Edm.Int32"/>
+                <Property Name="Address_AddressName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="DocTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="TaxTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="ApprovalDocTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="OpenDocTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="Remark" Type="Edm.String" MaxLength="100"/>
+                <Property Name="OrgStrucEleCode_Id" Type="Edm.Int32" Nullable="false"/>
+                <NavigationProperty Name="AttachmentId" Relationship="DominosCreateSCCTransaction.SCCOpenCR_AttachmentId" FromRole="SCCOpenCR" ToRole="Attachment"/>
+                <Property Name="AttachmentId_AttachmentId" Type="Edm.Guid"/>
+                <Property Name="AttachmentId_DamageId_Id" Type="Edm.Int32"/>
+                <Property Name="CRInvNo" Type="Edm.String" MaxLength="30"/>
+                <Property Name="CRInvDate" Type="Edm.DateTime" sap:display-format="Date"/>
+            </EntityType>
+            <EntityType Name="SCCClosedCR">
+                <Key>
+                    <PropertyRef Name="BTPCRNO"/>
+                    <PropertyRef Name="OrgStrucEleCode_Id"/>
+                </Key>
+                <Property Name="BTPCRNO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="CRDocDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <NavigationProperty Name="PSInvoiceHdr" Relationship="DominosCreateSCCTransaction.SCCClosedCR_PSInvoiceHdr" FromRole="SCCClosedCR" ToRole="PSInvoiceHdr"/>
+                <Property Name="PSInvoiceHdr_PsplInvoice" Type="Edm.String" MaxLength="30"/>
+                <Property Name="DeliveryFee" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="AccessCR" Type="Edm.String" MaxLength="15"/>
+                <Property Name="DomicasCR" Type="Edm.String" MaxLength="15"/>
+                <Property Name="SAPCR" Type="Edm.String" MaxLength="10"/>
+                <Property Name="DomicasSO" Type="Edm.String" MaxLength="15"/>
+                <Property Name="SAPSO" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ChangedDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="CreatedDateTime" Type="Edm.DateTimeOffset"/>
+                <NavigationProperty Name="SCC" Relationship="DominosCreateSCCTransaction.SCCClosedCR_SCC" FromRole="SCCClosedCR" ToRole="SCCRegion"/>
+                <Property Name="SCC_Id" Type="Edm.Int32"/>
+                <Property Name="SCC_RegionId" Type="Edm.Int32"/>
+                <Property Name="Store_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_AccountantId_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_AccountantId_RegionId_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_SCCId_Id" Type="Edm.Int32"/>
+                <Property Name="Franchise_SCCId_RegionId" Type="Edm.Int32"/>
+                <Property Name="Accountant_Id" Type="Edm.Int32"/>
+                <Property Name="Accountant_RegionId_Id" Type="Edm.Int32"/>
+                <Property Name="SubmissionDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="SubmittedBy" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ObjectType_Id" Type="Edm.Int32"/>
+                <Property Name="StatusCode_Id" Type="Edm.Int32"/>
+                <Property Name="StatusCode_ObjectType_Id" Type="Edm.Int32"/>
+                <Property Name="Address_Id" Type="Edm.Int32"/>
+                <Property Name="Address_AddressName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="DocTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="TaxTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="ApprovalDocTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="OpenDocTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="Remark" Type="Edm.String" MaxLength="100"/>
+                <Property Name="OrgStrucEleCode_Id" Type="Edm.Int32" Nullable="false"/>
+                <NavigationProperty Name="AttachmentId" Relationship="DominosCreateSCCTransaction.SCCClosedCR_AttachmentId" FromRole="SCCClosedCR" ToRole="Attachment"/>
+                <Property Name="AttachmentId_AttachmentId" Type="Edm.Guid"/>
+                <Property Name="AttachmentId_DamageId_Id" Type="Edm.Int32"/>
+                <Property Name="CRInvNo" Type="Edm.String" MaxLength="30"/>
+                <Property Name="CRInvDate" Type="Edm.DateTime" sap:display-format="Date"/>
+            </EntityType>
+            <EntityType Name="GetCRDetail">
+                <Property Name="PsplInvoice" Type="Edm.String" MaxLength="30"/>
+                <Property Name="NoOfCR" Type="Edm.Int32"/>
+                <Property Name="DeliveryFeeCreated" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="GetInvoiceItems">
+                <Key>
+                    <PropertyRef Name="PsplInvoice_PsplInvoice"/>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <NavigationProperty Name="PsplInvoice" Relationship="DominosCreateSCCTransaction.GetInvoiceItems_PsplInvoice" FromRole="GetInvoiceItems" ToRole="PSInvoiceHdr"/>
+                <Property Name="PsplInvoice_PsplInvoice" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="InvoiveType" Type="Edm.String" MaxLength="1"/>
+                <Property Name="RowID" Type="Edm.Int32"/>
+                <Property Name="ItemNo" Type="Edm.String" MaxLength="18"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="120"/>
+                <Property Name="Qty" Type="Edm.Int32"/>
+                <Property Name="UnitPrice" Type="Edm.Decimal" Scale="2" Precision="17"/>
+                <Property Name="UnitCost" Type="Edm.Decimal" Scale="2" Precision="23"/>
+                <Property Name="UnitFreight" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="UnitTax" Type="Edm.Decimal" Scale="2" Precision="23"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="8"/>
+                <Property Name="TrgBTPCRNo" Type="Edm.String" MaxLength="20"/>
+                <Property Name="TrgBTPCRRowId" Type="Edm.String" MaxLength="20"/>
+                <Property Name="OpenQty" Type="Edm.Decimal" Scale="0" Precision="18"/>
+                <Property Name="NetAmt" Type="Edm.Decimal" Scale="2" Precision="23"/>
+                <Property Name="LineTotal" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="LineNumber" Type="Edm.Int32"/>
+                <Property Name="InvoiceSequenceNumber" Type="Edm.Int32"/>
+                <Property Name="SalesOrderNo" Type="Edm.String" MaxLength="30"/>
+                <Property Name="CreditType" Type="Edm.String" MaxLength="15"/>
+                <Property Name="ProductType" Type="Edm.String" MaxLength="50"/>
+                <Property Name="CRQty" Type="Edm.Int32"/>
+                <Property Name="CRTypeID" Type="Edm.Int32"/>
+                <Property Name="CRTypeDesc" Type="Edm.String" MaxLength="30"/>
+                <Property Name="BillingCurrency" Type="Edm.String" MaxLength="3"/>
+            </EntityType>
+            <EntityType Name="GetInvoiceHdr">
+                <Key>
+                    <PropertyRef Name="PsplInvoice"/>
+                </Key>
+                <Property Name="PsplInvoice" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="SCCId" Type="Edm.String" MaxLength="20"/>
+                <Property Name="SCCDesc" Type="Edm.String" MaxLength="50"/>
+                <Property Name="StoreId" Type="Edm.String" MaxLength="15"/>
+                <Property Name="StoreDesc" Type="Edm.String" MaxLength="50"/>
+                <Property Name="FranchiseId" Type="Edm.String" MaxLength="30"/>
+                <Property Name="AccountantId" Type="Edm.String" MaxLength="20"/>
+                <Property Name="FranchiseDesc" Type="Edm.String" MaxLength="50"/>
+                <Property Name="AccountantDesc" Type="Edm.String" MaxLength="30"/>
+                <Property Name="InvoiceDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="InvoiceTime" Type="Edm.Time"/>
+                <Property Name="PlannedDelivery" Type="Edm.DateTimeOffset"/>
+                <Property Name="ActualDelivery" Type="Edm.DateTimeOffset"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="50"/>
+                <Property Name="DeliveryFee" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="TotalAmt" Type="Edm.Decimal" Scale="2" Precision="23"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="15"/>
+                <Property Name="BTPCrNo" Type="Edm.Int32"/>
+                <Property Name="AccessCR" Type="Edm.String" MaxLength="15"/>
+                <Property Name="DomicasCR" Type="Edm.String" MaxLength="15"/>
+                <Property Name="SAPCR" Type="Edm.String" MaxLength="10"/>
+                <Property Name="SalesOrderNo" Type="Edm.String" MaxLength="30"/>
+                <Property Name="TaxAmount" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="TotalFreight" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="NoOfItems" Type="Edm.Int32"/>
+                <Property Name="SubAmt" Type="Edm.Decimal" Scale="2" Precision="18"/>
+                <Property Name="CreditReqItem" Type="Edm.String" MaxLength="12"/>
+                <Property Name="LC_ID" Type="Edm.String" MaxLength="6"/>
+                <Property Name="BillingCurrency" Type="Edm.String" MaxLength="3"/>
+                <Property Name="EntryType" Type="Edm.String" MaxLength="5"/>
+                <Property Name="NOOFCR" Type="Edm.Int32"/>
+                <Property Name="DeliveryFeeCreated" Type="Edm.String"/>
+                <NavigationProperty Name="PSInvoiceItems" Relationship="DominosCreateSCCTransaction.GetInvoiceHdr_PSInvoiceItems" FromRole="GetInvoiceHdr" ToRole="GetInvoiceItems"/>
+                <Property Name="DrfBTPCRNO" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="GetCRQuantity">
+                <Property Name="PsplInvoice" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ItemNo" Type="Edm.String" MaxLength="18"/>
+                <Property Name="Qty" Type="Edm.Int32"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="120"/>
+                <Property Name="Id" Type="Edm.Int32"/>
+                <Property Name="StatusDescription" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="50"/>
+                <Property Name="OpenQty" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="GetCRItemDetails">
+                <Property Name="PsplInvoice" Type="Edm.String" MaxLength="30"/>
+                <Property Name="BTPCRNO" Type="Edm.Int32"/>
+                <Property Name="CRDocDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="StatusID" Type="Edm.Int32"/>
+                <Property Name="StatusDescription" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="150"/>
+                <Property Name="Qty" Type="Edm.Int32"/>
+                <Property Name="CRTypeID" Type="Edm.Int32"/>
+                <Property Name="CRTypeDesc" Type="Edm.String" MaxLength="30"/>
+            </EntityType>
+            <Association Name="CreditReqHdr_PSInvoiceHdr">
+                <End Role="CreditReqHdr" Type="DominosCreateSCCTransaction.CreditReqHdr" Multiplicity="*"/>
+                <End Role="PSInvoiceHdr" Type="DominosCreateSCCTransaction.PSInvoiceHdr" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="PSInvoiceHdr">
+                        <PropertyRef Name="PsplInvoice"/>
+                    </Principal>
+                    <Dependent Role="CreditReqHdr">
+                        <PropertyRef Name="PSInvoiceHdr_PsplInvoice"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CreditReqHdr_SCC">
+                <End Role="CreditReqHdr" Type="DominosCreateSCCTransaction.CreditReqHdr" Multiplicity="*"/>
+                <End Role="SCCRegion" Type="DominosCreateSCCTransaction.SCCRegion" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="SCCRegion">
+                        <PropertyRef Name="Id"/>
+                        <PropertyRef Name="RegionId"/>
+                    </Principal>
+                    <Dependent Role="CreditReqHdr">
+                        <PropertyRef Name="SCC_Id"/>
+                        <PropertyRef Name="SCC_RegionId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CreditReqHdr_AttachmentId">
+                <End Role="CreditReqHdr" Type="DominosCreateSCCTransaction.CreditReqHdr" Multiplicity="*"/>
+                <End Role="Attachment" Type="DominosCreateSCCTransaction.Attachment" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="Attachment">
+                        <PropertyRef Name="AttachmentId"/>
+                        <PropertyRef Name="DamageId_Id"/>
+                    </Principal>
+                    <Dependent Role="CreditReqHdr">
+                        <PropertyRef Name="AttachmentId_AttachmentId"/>
+                        <PropertyRef Name="AttachmentId_DamageId_Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CreditReqItem_BTPCRNo">
+                <End Role="CreditReqItem" Type="DominosCreateSCCTransaction.CreditReqItem" Multiplicity="*"/>
+                <End Role="CreditReqHdr" Type="DominosCreateSCCTransaction.CreditReqHdr" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="CreditReqHdr">
+                        <PropertyRef Name="BTPCRNO"/>
+                        <PropertyRef Name="OrgStrucEleCode_Id"/>
+                    </Principal>
+                    <Dependent Role="CreditReqItem">
+                        <PropertyRef Name="BTPCRNo_BTPCRNO"/>
+                        <PropertyRef Name="BTPCRNo_OrgStrucEleCode_Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CRCommit_CRNO">
+                <End Role="CRCommit" Type="DominosCreateSCCTransaction.CRCommit" Multiplicity="*"/>
+                <End Role="CreditReqHdr" Type="DominosCreateSCCTransaction.CreditReqHdr" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="CreditReqHdr">
+                        <PropertyRef Name="BTPCRNO"/>
+                        <PropertyRef Name="OrgStrucEleCode_Id"/>
+                    </Principal>
+                    <Dependent Role="CRCommit">
+                        <PropertyRef Name="CRNO_BTPCRNO"/>
+                        <PropertyRef Name="CRNO_OrgStrucEleCode_Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Attachment_ProductName">
+                <End Role="Attachment" Type="DominosCreateSCCTransaction.Attachment" Multiplicity="*"/>
+                <End Role="ProductName" Type="DominosCreateSCCTransaction.ProductName" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ProductName">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="Attachment">
+                        <PropertyRef Name="ProductName_Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Attachment_CreditReqItem">
+                <End Role="Attachment" Type="DominosCreateSCCTransaction.Attachment" Multiplicity="*"/>
+                <End Role="CreditReqItem" Type="DominosCreateSCCTransaction.CreditReqItem" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="CreditReqItem">
+                        <PropertyRef Name="BTPCRItem"/>
+                    </Principal>
+                    <Dependent Role="Attachment">
+                        <PropertyRef Name="CreditReqItem_BTPCRItem"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AttachmentRow_AttachmentID">
+                <End Role="AttachmentRow" Type="DominosCreateSCCTransaction.AttachmentRow" Multiplicity="*"/>
+                <End Role="Attachment" Type="DominosCreateSCCTransaction.Attachment" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="Attachment">
+                        <PropertyRef Name="AttachmentId"/>
+                        <PropertyRef Name="DamageId_Id"/>
+                    </Principal>
+                    <Dependent Role="AttachmentRow">
+                        <PropertyRef Name="AttachmentID_AttachmentId"/>
+                        <PropertyRef Name="AttachmentID_DamageId_Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AttachmentPIssue_ProductIssue">
+                <End Role="AttachmentPIssue" Type="DominosCreateSCCTransaction.AttachmentPIssue" Multiplicity="*"/>
+                <End Role="ProductIssue" Type="DominosCreateSCCTransaction.ProductIssue" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ProductIssue">
+                        <PropertyRef Name="IssueId"/>
+                    </Principal>
+                    <Dependent Role="AttachmentPIssue">
+                        <PropertyRef Name="ProductIssue_IssueId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AttachmentPIssue_AttachmentID">
+                <End Role="AttachmentPIssue" Type="DominosCreateSCCTransaction.AttachmentPIssue" Multiplicity="*"/>
+                <End Role="Attachment" Type="DominosCreateSCCTransaction.Attachment" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="Attachment">
+                        <PropertyRef Name="AttachmentId"/>
+                        <PropertyRef Name="DamageId_Id"/>
+                    </Principal>
+                    <Dependent Role="AttachmentPIssue">
+                        <PropertyRef Name="AttachmentID_AttachmentId"/>
+                        <PropertyRef Name="AttachmentID_DamageId_Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="BTP_DelvFee_Setup_Dtl_BTP_DelvFee_Setup">
+                <End Role="BTP_DelvFee_Setup_Dtl" Type="DominosCreateSCCTransaction.BTP_DelvFee_Setup_Dtl" Multiplicity="*"/>
+                <End Role="BTP_DelvFee_Setup" Type="DominosCreateSCCTransaction.BTP_DelvFee_Setup" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="BTP_DelvFee_Setup">
+                        <PropertyRef Name="Id"/>
+                        <PropertyRef Name="CRType_Id"/>
+                    </Principal>
+                    <Dependent Role="BTP_DelvFee_Setup_Dtl">
+                        <PropertyRef Name="BTP_DelvFee_Setup_Id"/>
+                        <PropertyRef Name="BTP_DelvFee_Setup_CRType_Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ProductIssue_IssueCode">
+                <End Role="ProductIssue" Type="DominosCreateSCCTransaction.ProductIssue" Multiplicity="*"/>
+                <End Role="ProductIssueMaster" Type="DominosCreateSCCTransaction.ProductIssueMaster" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ProductIssueMaster">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ProductIssue">
+                        <PropertyRef Name="IssueCode_Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ProductIssue_ProductID">
+                <End Role="ProductIssue" Type="DominosCreateSCCTransaction.ProductIssue" Multiplicity="*"/>
+                <End Role="ProductName" Type="DominosCreateSCCTransaction.ProductName" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="ProductName">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ProductIssue">
+                        <PropertyRef Name="ProductID_Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="PSInvoiceItems_PsplInvoice">
+                <End Role="PSInvoiceItems" Type="DominosCreateSCCTransaction.PSInvoiceItems" Multiplicity="*"/>
+                <End Role="PSInvoiceHdr" Type="DominosCreateSCCTransaction.PSInvoiceHdr" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="PSInvoiceHdr">
+                        <PropertyRef Name="PsplInvoice"/>
+                    </Principal>
+                    <Dependent Role="PSInvoiceItems">
+                        <PropertyRef Name="PsplInvoice_PsplInvoice"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SCCOpenCR_PSInvoiceHdr">
+                <End Role="SCCOpenCR" Type="DominosCreateSCCTransaction.SCCOpenCR" Multiplicity="*"/>
+                <End Role="PSInvoiceHdr" Type="DominosCreateSCCTransaction.PSInvoiceHdr" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="PSInvoiceHdr">
+                        <PropertyRef Name="PsplInvoice"/>
+                    </Principal>
+                    <Dependent Role="SCCOpenCR">
+                        <PropertyRef Name="PSInvoiceHdr_PsplInvoice"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SCCOpenCR_SCC">
+                <End Role="SCCOpenCR" Type="DominosCreateSCCTransaction.SCCOpenCR" Multiplicity="*"/>
+                <End Role="SCCRegion" Type="DominosCreateSCCTransaction.SCCRegion" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="SCCRegion">
+                        <PropertyRef Name="Id"/>
+                        <PropertyRef Name="RegionId"/>
+                    </Principal>
+                    <Dependent Role="SCCOpenCR">
+                        <PropertyRef Name="SCC_Id"/>
+                        <PropertyRef Name="SCC_RegionId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SCCOpenCR_AttachmentId">
+                <End Role="SCCOpenCR" Type="DominosCreateSCCTransaction.SCCOpenCR" Multiplicity="*"/>
+                <End Role="Attachment" Type="DominosCreateSCCTransaction.Attachment" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="Attachment">
+                        <PropertyRef Name="AttachmentId"/>
+                        <PropertyRef Name="DamageId_Id"/>
+                    </Principal>
+                    <Dependent Role="SCCOpenCR">
+                        <PropertyRef Name="AttachmentId_AttachmentId"/>
+                        <PropertyRef Name="AttachmentId_DamageId_Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SCCClosedCR_PSInvoiceHdr">
+                <End Role="SCCClosedCR" Type="DominosCreateSCCTransaction.SCCClosedCR" Multiplicity="*"/>
+                <End Role="PSInvoiceHdr" Type="DominosCreateSCCTransaction.PSInvoiceHdr" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="PSInvoiceHdr">
+                        <PropertyRef Name="PsplInvoice"/>
+                    </Principal>
+                    <Dependent Role="SCCClosedCR">
+                        <PropertyRef Name="PSInvoiceHdr_PsplInvoice"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SCCClosedCR_SCC">
+                <End Role="SCCClosedCR" Type="DominosCreateSCCTransaction.SCCClosedCR" Multiplicity="*"/>
+                <End Role="SCCRegion" Type="DominosCreateSCCTransaction.SCCRegion" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="SCCRegion">
+                        <PropertyRef Name="Id"/>
+                        <PropertyRef Name="RegionId"/>
+                    </Principal>
+                    <Dependent Role="SCCClosedCR">
+                        <PropertyRef Name="SCC_Id"/>
+                        <PropertyRef Name="SCC_RegionId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SCCClosedCR_AttachmentId">
+                <End Role="SCCClosedCR" Type="DominosCreateSCCTransaction.SCCClosedCR" Multiplicity="*"/>
+                <End Role="Attachment" Type="DominosCreateSCCTransaction.Attachment" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="Attachment">
+                        <PropertyRef Name="AttachmentId"/>
+                        <PropertyRef Name="DamageId_Id"/>
+                    </Principal>
+                    <Dependent Role="SCCClosedCR">
+                        <PropertyRef Name="AttachmentId_AttachmentId"/>
+                        <PropertyRef Name="AttachmentId_DamageId_Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GetInvoiceItems_PsplInvoice">
+                <End Role="GetInvoiceItems" Type="DominosCreateSCCTransaction.GetInvoiceItems" Multiplicity="*"/>
+                <End Role="PSInvoiceHdr" Type="DominosCreateSCCTransaction.PSInvoiceHdr" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="PSInvoiceHdr">
+                        <PropertyRef Name="PsplInvoice"/>
+                    </Principal>
+                    <Dependent Role="GetInvoiceItems">
+                        <PropertyRef Name="PsplInvoice_PsplInvoice"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GetInvoiceHdr_PSInvoiceItems">
+                <End Role="GetInvoiceHdr" Type="DominosCreateSCCTransaction.GetInvoiceHdr" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="GetInvoiceItems" Type="DominosCreateSCCTransaction.GetInvoiceItems" Multiplicity="*"/>
+            </Association>
+            <Annotations Target="DominosCreateSCCTransaction.CreditReqHdr/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.CreditReqHdr/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.CreditReqHdr/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.CreditReqHdr/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.CreditReqItem/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.CreditReqItem/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.CreditReqItem/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.CreditReqItem/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.CRCommit/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.CRCommit/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.CRCommit/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.CRCommit/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.Attachment/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.Attachment/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.Attachment/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.Attachment/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.AttachmentRow/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.AttachmentRow/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.AttachmentRow/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.AttachmentRow/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.AttachmentRow/MediaType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.IsMediaType" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.AttachmentPIssue/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.AttachmentPIssue/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.AttachmentPIssue/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.AttachmentPIssue/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.SCCRegion/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.SCCRegion/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.SCCRegion/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.SCCRegion/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.UserAssignment/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.UserAssignment/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.UserAssignment/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.UserAssignment/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.BTP_DelvFee_Setup/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.BTP_DelvFee_Setup/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.BTP_DelvFee_Setup/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.BTP_DelvFee_Setup/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.BTP_DelvFee_Setup_Dtl/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.BTP_DelvFee_Setup_Dtl/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.BTP_DelvFee_Setup_Dtl/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.BTP_DelvFee_Setup_Dtl/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.ProductName/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.ProductName/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.ProductName/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.ProductName/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.ProductIssue/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.ProductIssue/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.ProductIssue/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.ProductIssue/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.ProductIssueMaster/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.ProductIssueMaster/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.ProductIssueMaster/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.ProductIssueMaster/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.PSInvoiceHdr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.EntityContainer/PSInvoiceHdr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.PSInvoiceHdr/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.PSInvoiceHdr/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.PSInvoiceHdr/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.PSInvoiceHdr/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.PSInvoiceItems" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.EntityContainer/PSInvoiceItems" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.PSInvoiceItems/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.PSInvoiceItems/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.PSInvoiceItems/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.PSInvoiceItems/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetCRDetail/NoOfCR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetCRDetail/DeliveryFeeCreated" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.LineItem" Qualifier="refitems">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ItemNo"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Description"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Qty"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="UOM"/>
+                            <PropertyValue Property="Label" String="UOM"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CRQty"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CRTypeDesc"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="NetAmt"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="UnitPrice"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="UnitTax"/>
+                            <PropertyValue Property="Label" String="Unit Tax"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.EntityContainer/GetInvoiceItems" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/PsplInvoice" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/PsplInvoice_PsplInvoice" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/Id" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/InvoiveType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/RowID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/ItemNo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Item ID"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/Description" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/Qty" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Total Qty"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/UnitPrice" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Measures.ISOCurrency" Path="BillingCurrency"/>
+                <Annotation Term="Common.Label" String="Unit Price"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/UnitCost" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/UnitFreight" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/UnitTax" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Measures.ISOCurrency" Path="BillingCurrency"/>
+                <Annotation Term="Common.Label" String="Unit Tax"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/TrgBTPCRNo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/TrgBTPCRRowId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/OpenQty" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/NetAmt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Measures.ISOCurrency" Path="BillingCurrency"/>
+                <Annotation Term="Common.Label" String="Net Amount"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/LineTotal" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/LineNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/InvoiceSequenceNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/SalesOrderNo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/CreditType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/ProductType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/CRQty" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Credit Qty"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/CRTypeID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceItems/CRTypeDesc" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Credit Type"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Invoice List"/>
+                        <PropertyValue Property="TypeNamePlural" String="Invoice List"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="PsplInvoice"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>PsplInvoice</PropertyPath>
+                        <PropertyPath>SalesOrderNo</PropertyPath>
+                        <PropertyPath>InvoiceDate</PropertyPath>
+                        <PropertyPath>StoreId</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="PsplInvoice"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PsplInvoice"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="InvoiceDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SalesOrderNo"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="FranchiseDesc"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="TotalAmt"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="NoOfItems"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="NOOFCR"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="HeaderStore">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SCCDesc"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DrfBTPCRNO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="HeaderInvoice">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SalesOrderNo"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="PsplInvoice"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="InvoiceDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="NoOfItems"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="HeaderAmount">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SubAmt"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="TaxAmount"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="TotalAmt"/>
+                                    <PropertyValue Property="Label" String="Total Amount"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="General Information"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#HeaderStore"/>
+                            <PropertyValue Property="ID" String="reffac3"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Invoice Information"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#HeaderInvoice"/>
+                            <PropertyValue Property="ID" String="reffac2"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Amount"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#HeaderAmount"/>
+                            <PropertyValue Property="ID" String="reffac1"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Invoice Items"/>
+                            <PropertyValue Property="Target" AnnotationPath="PSInvoiceItems/@UI.LineItem#refitems"/>
+                            <PropertyValue Property="ID" String="ItemId"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.EntityContainer/GetInvoiceHdr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.PresentationVariant">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="PsplInvoice"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/PsplInvoice" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Invoice"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/SCCId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="SCC ID"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/SCCDesc" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="SCC"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/StoreId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Store ID"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/StoreDesc" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Store Description"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/FranchiseId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Fran Id"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/AccountantId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Accountant Id"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/FranchiseDesc" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Franchisee Description"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/AccountantDesc" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Accountant Description"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/InvoiceDate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Invoice Date"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/InvoiceTime" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Invoice Time"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/PlannedDelivery" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Planned Delivery"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/ActualDelivery" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Actual Delivery"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/Description" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/DeliveryFee" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Delivery Fee"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/TotalAmt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Measures.ISOCurrency" Path="BillingCurrency"/>
+                <Annotation Term="Common.Label" String="Amount"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/Status" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Status"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/BTPCrNo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="CR No"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/AccessCR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Access CR"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/DomicasCR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Domicas CR"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/SAPCR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="SAP CR"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/SalesOrderNo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Sales Order No."/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/TaxAmount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Measures.ISOCurrency" Path="BillingCurrency"/>
+                <Annotation Term="Common.Label" String="Tax"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/TotalFreight" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Total Freight"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/NoOfItems" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Common.Label" String="No Of Items"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/SubAmt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Measures.ISOCurrency" Path="BillingCurrency"/>
+                <Annotation Term="Common.Label" String="Sub Amount"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/CreditReqItem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/LC_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/BillingCurrency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/EntryType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/NOOFCR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="No. Of CR's"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/DeliveryFeeCreated" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetInvoiceHdr/DrfBTPCRNO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Common.Label" String="Draft CR"/>
+            </Annotations>
+            <Annotations Target="DominosCreateSCCTransaction.GetCRQuantity/OpenQty" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

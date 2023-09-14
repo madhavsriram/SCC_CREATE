@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+ xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:c="sap.suite.ui.commons">
+<Dialog id="NoofCRPopup"  afterClose="afterClose" beforeOpen="onBeforeOpenDialog"  titleAlignment="Center" class="bgHeader dialogbgText sapUiPopupWithPadding"
+title="">
+<content>
+<Text text="For associated Credit Request and its Details Click here"/>
+</content>
+<buttons>
+<Button text="Ok" press="onNoofCRNavigate" id="SaveCRPopup" type="Emphasized" enabled="true"></Button>
+<Button id="CloseCRPopup" text="Cancel" type="Emphasized" press="onNooFCRClose"></Button>
+</buttons>
+</Dialog>
+</core:FragmentDefinition>

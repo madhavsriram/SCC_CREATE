@@ -1,0 +1,104 @@
+###Build Multitarget Application & Deploy it to Cloud Foundry
+name: Create SCC Deploy
+
+##Controls when the action will run. Triggers the workflow on push or pull request
+#events but only for the master branch
+on:
+  push:
+    branches:
+      - dev
+      - dev-support
+      - qa
+      - qa-support
+      - prd
+
+#A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.18.0
+      - name: Install MTA Build Tool
+        run: npm install -g mbt
+    #Do not generate package-lock.json
+    #See https://blogs.sap.com/2020/07/07/escaping-eintegrity-hell/
+      - name: Disable package-lock.json
+        run: npm config set package-lock false
+      - name: Build MTA
+        run: mbt build -p cf
+      - name: Upload Artifact
+        uses: actions/upload-artifact@master	
+        with:	
+          name: mta
+          path: ./mta_archives/createscccr_0.0.1.mtar
+        
+  deploy:
+     needs: build
+     runs-on: ubuntu-latest
+     
+     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@master
+        with:
+           name: mta
+           path: ./
+      - name: Deploy Dev
+        if: github.ref == 'refs/heads/dev'  
+        uses: ./.github/actions
+        with:
+           cf_api: ${{ secrets.CF_API }}
+           cf_username: ${{ secrets.CF_USER }}
+           cf_password: ${{ secrets.CF_PASSWORD }}
+           cf_org: ${{ secrets.CF_ORG }}
+           cf_space: ${{ secrets.CF_SPACE }}
+           command: deploy ./createscccr_0.0.1.mtar -f
+           
+      - name: Deploy Dev-support
+        if: github.ref == 'refs/heads/dev-support'  
+        uses: ./.github/actions
+        with:
+           cf_api: ${{ secrets.CF_API }}
+           cf_username: ${{ secrets.CF_USER }}
+           cf_password: ${{ secrets.CF_PASSWORD }}
+           cf_org: ${{ secrets.CF_ORG }}
+           cf_space: ${{ secrets.CF_SPACE }}
+           command: deploy ./createscccr_0.0.1.mtar -f           
+
+      - name: Deploy QA
+        if: github.ref == 'refs/heads/qa'      
+        uses: ./.github/actions
+        with:
+           cf_api: ${{ secrets.CF_API }}
+           cf_username: ${{ secrets.CF_USER }}
+           cf_password: ${{ secrets.CF_PASSWORD }}
+           cf_org: ${{ secrets.CF_ORG_QA }}
+           cf_space: ${{ secrets.CF_SPACE_QA }}
+           command: deploy ./createscccr_0.0.1.mtar -f
+           
+
+      - name: Deploy QA-support
+        if: github.ref == 'refs/heads/qa-support'      
+        uses: ./.github/actions
+        with:
+           cf_api: ${{ secrets.CF_API }}
+           cf_username: ${{ secrets.CF_USER }}
+           cf_password: ${{ secrets.CF_PASSWORD }}
+           cf_org: ${{ secrets.CF_ORG_QA }}
+           cf_space: ${{ secrets.CF_SPACE_QA }}
+           command: deploy ./createscccr_0.0.1.mtar -f           
+
+      - name: Deploy PRD
+        if: github.ref == 'refs/heads/prd'      
+        uses: ./.github/actions
+        with:
+           cf_api: ${{ secrets.CF_API }}
+           cf_username: ${{ secrets.CF_USER }}
+           cf_password: ${{ secrets.CF_PASSWORD }}
+           cf_org: ${{ secrets.CF_ORG_PRD }}
+           cf_space: ${{ secrets.CF_SPACE_PRD }}
+           command: deploy ./createscccr_0.0.1.mtar -f

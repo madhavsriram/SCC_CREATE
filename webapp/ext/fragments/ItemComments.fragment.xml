@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:c="sap.suite.ui.commons">
+	<Dialog title="Item Comments" class="bgHeader dialogbgText" titleAlignment="Center" >
+    <!-- draggable="true" resizable="true" -->
+		<content>
+			
+	<c:Timeline noDataText="No Comments Available" id="timeline" axisOrientation="Vertical" showIcons="true" showSearch="false" showSort="false" showItemFilter="false"
+						showFilterBar="false" enableScroll="false" enableDoubleSided="false" content="{itemCommentsModel>/results}" select="onTimelineSelect">
+						<c:content>
+							<c:TimelineItem dateTime="{itemCommentsModel>createdAt}"  customActionClicked="onSelect"
+								title="left comment" text="{itemCommentsModel>Comment}" icon="sap-icon://comment" userName="{itemCommentsModel>createdBy}"></c:TimelineItem>
+						</c:content>
+					</c:Timeline>
+					<!-- <FeedInput placeholder="Enter Comments"
+		post="onItemsCommentPost"
+		showIcon="false" /> -->
+        <TextArea id="idItemCTA" placeholder="Enter Comments" width="295px" height="75px" class="sapUiSmallMarginBegin" valueLiveUpdate="true" liveChange="liveChangeItem"/>
+		</content>
+		<buttons>
+        <Button id="sendItem" text="Save" press="onItemsCommentPost" enabled="false"></Button>
+		<Button text="Close"  press="onItemsCommentsClose"></Button>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

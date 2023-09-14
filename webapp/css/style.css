@@ -1,0 +1,62 @@
+
+.sapFDynamicPageTitleMain>.sapFDynamicPageTitleMainInner .sapFDynamicPageTitleMainHeading .sapFDynamicPageTitleMainHeadingInner .sapMTitle {
+    font-size: .875rem !important;
+}
+div[id*='Quality'] div h5 {   
+    display: none !important;
+}
+
+/*
+.bgHeader .sapMIBar.sapMHeader-CTX {
+    background-color: #33A7FF!important;
+    filter: none;
+    background-image: none;
+}
+
+
+
+
+
+.sapUiSizeCompact .sapMListTblCell.sapMListTblHeaderCell {
+    background : #33A7FF !important;
+    color: white !important;
+    padding: 0;
+}
+
+
+.dialogbgText .sapMBar .sapMBarRight.sapMBarContainer>*:first-child:last-child, .sapMBar .sapMBarLeft.sapMBarContainer>*:first-child:last-child, .sapMBar .sapMBarMiddle .sapMBarContainer>*:first-child:last-child {
+    margin: 0;
+    color: white;
+}
+
+.sapUiSizeCompact .sapUxAPObjectPageSectionHeader, .sapUxAPObjectPageSectionHeader {
+    border-top: .0625rem solid #d9d9d9;
+    height: 0.75rem;
+    line-height: 2.25rem;
+}
+
+#createstorecr::sap.suite.ui.generic.template.ObjectPage.view.Details::PSInvoiceHdr--ItemId::responsiveTable-listUl tr th span{
+
+font-weight: bold !important; }
+
+.sapFDynamicPageTitleMain>.sapFDynamicPageTitleMainInner .sapFDynamicPageTitleMainHeading .sapFDynamicPageTitleMainHeadingInner .sapMTitle {
+    font-size: 1.5rem;
+}
+
+.blackText .sapMLabel:not(.sapMLabelWrapped) .sapMLabelTextWrapper {
+    color: black !important;
+    display: inline-block;
+    vertical-align: top;
+    max-width: 100%;
+}
+
+*/
+
+/* form width css  */
+.sapUiRespGridMedia-Std-Tablet.sapUiRespGridHSpace0>.sapUiRespGridSpanM3 {
+    width: 24%;
+}
+
+.sapUiRespGridMedia-Std-Tablet.sapUiRespGridHSpace0>.sapUiRespGridSpanM4 {
+    width: 31.333333%;
+}

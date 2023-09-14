@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:c="sap.suite.ui.commons">
+	<Dialog title="Header Comments" class="bgHeader dialogbgText" titleAlignment="Center" >
+		<content>
+			
+	<c:Timeline noDataText="No Comments Available"  axisOrientation="Vertical" showIcons="true" showSearch="false" showSort="false" showItemFilter="false"
+						showFilterBar="false" enableScroll="false" enableDoubleSided="false" content="{headerCommentsModel>/results}" select="onTimelineSelect">
+						<c:content>
+							<c:TimelineItem dateTime="{headerCommentsModel>createdAt}"  customActionClicked="onSelect"
+								title="left comment" text="{headerCommentsModel>Comment}" icon="sap-icon://comment" userName="{headerCommentsModel>createdBy}"></c:TimelineItem>
+						</c:content>
+					</c:Timeline>
+					<!-- <FeedInput placeholder="Enter Comments"
+		post="onHeaderCommentPost"
+		showIcon="false" /> -->
+        <TextArea id="idHeaderCTA" placeholder="Enter Comments" width="295px" height="75px" class="sapUiSmallMarginBegin" valueLiveUpdate="true" liveChange="liveChangeHeader"/>
+
+		</content>
+		<buttons>
+        <Button id="sendHeader" text="Save" press="onHeaderCommentPost" enabled="false" />
+			<Button text="Close"  press="onHeaderCommentsClose"></Button>
+			<!-- <Button icon="sap-icon://decline" tooltip="Close" type="Reject" press="onHeaderCommentsClose"></Button> -->
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
